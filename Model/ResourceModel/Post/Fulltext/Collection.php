@@ -79,7 +79,7 @@ class Collection extends \Ves\Blog\Model\ResourceModel\Post\Collection
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
 
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $date, $storeManager, $connection, $resource);
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $storeManager, $date, $connection, $resource);
 
         $this->requestBuilder    = $requestBuilder;
         $this->searchEngine      = $searchEngine;
@@ -161,7 +161,7 @@ class Collection extends \Ves\Blog\Model\ResourceModel\Post\Collection
      *
      * @return \Lof\ElasticsuiteBlog\Model\ResourceModel\Post\Fulltext\Collection
      */
-    public function addSearchFilter($query)
+    public function addSearchFilter($query = "")
     {
         $this->queryText = $query;
 
