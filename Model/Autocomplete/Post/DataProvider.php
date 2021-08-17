@@ -9,6 +9,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Smile\ElasticsuiteCore\Helper\Autocomplete as ConfigurationHelper;
 use Lof\ElasticsuiteBlog\Model\ResourceModel\Post\Fulltext\CollectionFactory as PostCollectionFactory;
 use Smile\ElasticsuiteCore\Model\Autocomplete\Terms\DataProvider as TermDataProvider;
+use Ves\Blog\Helper\Data;
 
 /**
  * Catalog product autocomplete data provider.
@@ -69,6 +70,11 @@ class DataProvider implements DataProviderInterface
     protected $maxAutocompleteResults = 5;
 
     /**
+     * @var Data
+     */
+    protected $blogHelperData;
+
+    /**
      * Constructor.
      *
      * @param ItemFactory           $itemFactory          Suggest item factory.
@@ -77,6 +83,7 @@ class DataProvider implements DataProviderInterface
      * @param postCollectionFactory  $postCollectionFactory Post collection factory.
      * @param ConfigurationHelper   $configurationHelper  Autocomplete configuration helper.
      * @param StoreManagerInterface $storeManager         Store manager.
+     * @param Data $blogHelperData Ves Blog Helper Data
      * @param string                $type                 Autocomplete provider type.
      */
     public function __construct(
@@ -86,6 +93,7 @@ class DataProvider implements DataProviderInterface
         PostCollectionFactory $postCollectionFactory,
         ConfigurationHelper $configurationHelper,
         StoreManagerInterface $storeManager,
+        Data $blogHelperData,
         $type = self::AUTOCOMPLETE_TYPE
     ) {
         $this->itemFactory          = $itemFactory;
@@ -95,6 +103,7 @@ class DataProvider implements DataProviderInterface
         $this->configurationHelper  = $configurationHelper;
         $this->type                 = $type;
         $this->storeManager         = $storeManager;
+        $this->blogHelperData = $blogHelperData;
     }
     /**
      * @return string
@@ -117,7 +126,7 @@ class DataProvider implements DataProviderInterface
             foreach ($postCollection as $post) {
                 $result[] = $this->itemFactory->create([
                         'title' => $post->getTitle(),
-                        'url'   => $post->getPostUrl(),
+                        'url'   => $this->blogHelperData->getPostUrl($post),
                         'type' => $this->getType()]);
                 $i++;
                 if ($i == $this->maxAutocompleteResults) {

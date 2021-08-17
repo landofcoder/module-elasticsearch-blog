@@ -1,10 +1,11 @@
 <?php /** @var \Lof\ElasticsuiteBlog\Block\Post\Result */  ?>
+<?php $helper = $this->helper("Ves\Blog\Helper\Data"); ?>
 <div class="search results">
-    <h2><?php echo __('Results in blog post.')?></h2>
+    <h2><?= __('Results in blog post.')?></h2>
 
     <ul>
         <?php foreach ($block->getPostCollection() as $currentPost) : ?>
-            <li><a href="<?php echo $currentPost->getPostUrl()?>"><?php echo $currentPost->getTitle(); ?></a></li>
+            <li><a href="<?= $helper->getPostUrl($currentPost);?>"><?= $currentPost->getTitle(); ?></a></li>
         <?php endforeach; ?>
     </ul>
 </div>
