@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="vesBlogPageSearchIndexHandler" type="Smile\ElasticsuiteCore\Indexer\GenericIndexerHandler">
+        <arguments>
+            <argument name="indexName" xsi:type="string">blog_post</argument>
+            <argument name="typeName" xsi:type="string">post</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Lof\ElasticsuiteBlog\Model\Post\Indexer\Fulltext">
+        <arguments>
+            <argument name="indexerHandler" xsi:type="object">vesBlogPageSearchIndexHandler</argument>
+        </arguments>
+    </type>
+
+    <type name="Ves\Blog\Model\Post">
+        <plugin name="lof_elasticsuite_blog_reindex_post_after_blog_post_save" type="Lof\ElasticsuiteBlog\Plugin\Indexer\Post\Save\ReindexPostAfterSave" />
+    </type>
+</config>
