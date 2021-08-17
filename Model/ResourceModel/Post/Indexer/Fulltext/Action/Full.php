@@ -43,7 +43,7 @@ class Full extends AbstractIndexer
     public function getSearchableBlogPost($storeId, $blogPostIds = null, $fromId = 0, $limit = 100)
     {
         $select = $this->getConnection()->select()
-                       ->from(['p' => $this->getTable('magefan_blog_post')]);
+                       ->from(['p' => $this->getTable('ves_blog_post')]);
 
         $this->addIsVisibleInStoreFilter($select, $storeId);
 
@@ -70,7 +70,7 @@ class Full extends AbstractIndexer
     private function addIsVisibleInStoreFilter($select, $storeId)
     {
         $select->join(
-            ['ps' => $this->getTable('magefan_blog_post_store')],
+            ['ps' => $this->getTable('ves_blog_post_store')],
             "p.post_id = ps.post_id"
         );
         $select->where('ps.store_id IN (?)', [0, $storeId]);

@@ -22,7 +22,7 @@ class InstallSchema implements InstallSchemaInterface
         $setup->startSetup();
 
         $connection = $setup->getConnection();
-        $table      = $setup->getTable('magefan_blog_post');
+        $table      = $setup->getTable('ves_blog_post');
 
         // Append a column 'is_searchable' into the db.
         $connection->addColumn(

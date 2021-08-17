@@ -1,7 +1,7 @@
 ## ElasticSuite Blog search for Ves Magento 2 Blog
 
 
-This module connecting between each other [ElasticSuite](https://github.com/Smile-SA/elasticsuite) search extension and  [Ves](https://magefan.com/magento2-extensions) [Magento 2 Blog extension](https://landofcoder.com/magento-2-blog-extension.html)
+This module connecting between each other [ElasticSuite](https://github.com/Smile-SA/elasticsuite) search extension and [Landofcoder](https://landofcoder.com/magento/magento-2-extensions.html) [Magento 2 Blog extension](https://landofcoder.com/magento-2-blog-extension.html)
 
 It allows to index Magento 2 Blog posts into the search engine and display them into the autocomplete results, and also on the search result page.
 
