@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="lof_elasticsuite_blog" frontName="elasticsuite_blog">
+        <route id="elasticsuiteblog" frontName="elasticsuiteblog">
             <module name="Lof_ElasticsuiteBlog" />
         </route>
     </router>
